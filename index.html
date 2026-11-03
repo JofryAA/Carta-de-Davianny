@@ -239,13 +239,47 @@ body{
 .pola input{position:absolute;opacity:0;width:1px;height:1px}
 .pola figcaption{font-family:var(--f-script);color:var(--ink);font-size:1.5rem;text-align:center;padding:8px 4px 12px;line-height:1.1}
 
+
+/* ---------- Respuesta ---------- */
+.reply{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px}
+.reply h2{font-family:var(--f-script);font-weight:400;font-size:clamp(2.4rem,8vw,3.4rem);margin:0;color:var(--paper);text-align:center}
+.r-sub{margin:-6px 0 6px;font-style:italic;color:var(--paper-edge);text-align:center}
+.r-card,.r-done{width:100%;max-width:560px;background:var(--paper);color:var(--ink);border-radius:6px;padding:28px clamp(18px,5vw,34px);
+  display:flex;flex-direction:column;gap:10px;box-shadow:0 30px 60px -28px rgba(0,0,0,.7);position:relative}
+.r-card::before,.r-done::before{content:"";position:absolute;inset:8px;border:1px solid rgba(217,163,91,.55);border-radius:3px;pointer-events:none}
+.r-lab{font-family:var(--f-type);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+#rFrom,#rMsg{width:100%;font-family:var(--f-body);font-size:1.15rem;color:var(--ink);background:#fff;border:1.5px solid var(--paper-edge);border-radius:10px;padding:10px 14px;outline:none;transition:border-color .3s,box-shadow .3s;position:relative}
+#rMsg{resize:vertical;min-height:140px;line-height:1.5;
+  background:repeating-linear-gradient(transparent 0 29px,rgba(194,64,95,.1) 29px 30px),#fff;background-attachment:local}
+#rFrom:focus,#rMsg:focus{border-color:var(--rose);box-shadow:0 0 0 4px rgba(194,64,95,.14)}
+.r-moods{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.r-chips{display:flex;flex-wrap:wrap;gap:8px}
+.r-chips label{cursor:pointer;position:relative}
+.r-chips input{position:absolute;opacity:0;width:1px;height:1px}
+.r-chips span{display:inline-block;font-family:var(--f-body);font-size:1rem;padding:7px 13px;border-radius:999px;border:1.5px solid var(--paper-edge);background:#fff;transition:all .25s}
+.r-chips input:checked+span{background:var(--rose);border-color:var(--rose);color:#fff;transform:scale(1.04)}
+.r-chips input:focus-visible+span{outline:3px solid var(--gold);outline-offset:2px}
+.r-btn{margin-top:8px;align-self:center;font-family:var(--f-body);font-size:1.15rem;font-weight:600;color:#fff;border:0;border-radius:999px;padding:13px 30px;cursor:pointer;
+  background:linear-gradient(135deg,#d9566f,var(--wax));box-shadow:0 12px 26px -10px rgba(158,31,61,.7);transition:transform .25s,opacity .25s;position:relative}
+.r-btn:hover{transform:translateY(-2px)}
+.r-btn:disabled{opacity:.6;cursor:wait}
+.r-btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.r-status{margin:0;min-height:1.2em;text-align:center;color:var(--wax)}
+.r-alt{text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center}
+.r-alt p{margin:0;font-size:1rem}
+.r-wa{font-family:var(--f-body);font-weight:600;color:#fff;background:#1f8f55;border-radius:999px;padding:10px 20px;text-decoration:none}
+.r-done{align-items:center;text-align:center;animation:gIn .8s cubic-bezier(.3,1.3,.5,1) both}
+.r-done h3{font-family:var(--f-script);font-weight:400;font-size:2.6rem;margin:0;color:var(--rose)}
+.r-done p{margin:0;font-style:italic;color:var(--ink-soft)}
+.r-heart{font-size:2.4rem;color:var(--rose);animation:beatSmall 1.6s ease-in-out infinite}
+
 footer{font-family:var(--f-type);font-size:.75rem;letter-spacing:.2em;color:var(--paper-edge);opacity:.7;text-transform:uppercase}
 
 /* reveal */
 .letter,.memories{transition:transform 1s,opacity 1s}
-body:not(.revealed) .letter,body:not(.revealed) .memories,body:not(.revealed) footer{display:none}
+body:not(.revealed) .letter,body:not(.revealed) .memories,body:not(.revealed) .reply,body:not(.revealed) footer{display:none}
 body.revealed .letter{animation:rise 1.1s ease both}
-body.revealed .memories,body.revealed footer{animation:fade 1.2s .5s ease both}
+body.revealed .memories,body.revealed .reply,body.revealed footer{animation:fade 1.2s .5s ease both}
 @keyframes rise{from{opacity:0;transform:translateY(40px) rotate(var(--tilt))}to{opacity:1;transform:translateY(0) rotate(var(--tilt))}}
 @keyframes fade{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
 .envelope.open + .hint{opacity:0;transition:opacity .5s}
@@ -296,6 +330,7 @@ body.locked .wrap{visibility:hidden}
 .g-clock{font-family:var(--f-body);font-weight:600;font-size:clamp(2.8rem,13vw,3.8rem);line-height:1;color:var(--wax);font-variant-numeric:tabular-nums;letter-spacing:.02em}
 .g-bar{width:100%;height:8px;border-radius:999px;background:var(--paper-edge);overflow:hidden;margin-top:6px}
 .g-bar span{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--rose),var(--gold));transition:width 1s linear}
+.g-away{margin:4px 0 0;font-family:var(--f-type);font-size:.8rem;letter-spacing:.08em;color:var(--wax)}
 .g-note{margin:6px 0 0;font-family:var(--f-body);font-style:italic;font-size:1rem;line-height:1.45;color:var(--ink-soft)}
 .g-wait .g-lock{animation:beatSmall 2s ease-in-out infinite}
 
@@ -333,7 +368,7 @@ body.locked .wrap{visibility:hidden}
   .gate-card,.gate-card.shake,.gate.ok .g-lock,.g-wait.thump,.gate.final::before,.g-big.go{animation:none}
   .seal{animation:none}
   .flap,.peek,.pola{transition:none}
-  body.revealed .letter,body.revealed .memories,body.revealed footer{animation:none}
+  body.revealed .letter,body.revealed .memories,body.revealed .reply,body.revealed footer{animation:none}
 }
 </style>
 
@@ -372,6 +407,7 @@ body.locked .wrap{visibility:hidden}
     <p class="g-q">Tu carta se abre en</p>
     <div class="g-clock" id="gClock" aria-live="off">3:00:00</div>
     <div class="g-bar"><span id="gBar"></span></div>
+    <p class="g-away" id="gAway" hidden>⏸ Pausado. Vuelve aquí para seguir ♥</p>
     <p class="g-note">Puedes salir y volver cuando quieras.<br>El tiempo sigue corriendo y solo tienes que esperar esta vez ♥</p>
   </div>
   <div class="g-big" id="gBig" aria-hidden="true"></div>
@@ -474,6 +510,39 @@ body.locked .wrap{visibility:hidden}
     <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
     <button class="nav next" type="button" id="lbN" aria-label="Foto siguiente">›</button>
   </div>
+  <section class="reply" id="reply" aria-labelledby="replyT">
+    <h2 id="replyT">Ahora te toca a ti</h2>
+    <p class="r-sub">Escríbeme lo que sientas. Me llega solo a mí ♥</p>
+    <form class="r-card" id="rForm" name="mensaje-davianny" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="mensaje-davianny">
+      <p hidden><label>No llenar: <input name="bot-field"></label></p>
+      <label class="r-lab" for="rFrom">Tu nombre</label>
+      <input id="rFrom" name="nombre" type="text" value="Davianny" maxlength="60">
+      <label class="r-lab" for="rMsg">Tu mensaje para Jolfreilyn</label>
+      <textarea id="rMsg" name="mensaje" rows="6" maxlength="3000" placeholder="Querido admirador secreto…" required></textarea>
+      <div class="r-moods" role="group" aria-label="¿Cómo te sentiste?">
+        <span class="r-lab">¿Cómo te hizo sentir la carta?</span>
+        <div class="r-chips">
+          <label><input type="radio" name="sentimiento" value="Me hiciste llorar 🥹"><span>🥹 Lloré</span></label>
+          <label><input type="radio" name="sentimiento" value="Enamorada 😍"><span>😍 Enamorada</span></label>
+          <label><input type="radio" name="sentimiento" value="Me hiciste reír 😂"><span>😂 Me reí</span></label>
+          <label><input type="radio" name="sentimiento" value="Todo junto ❤️"><span>❤️ Todo junto</span></label>
+        </div>
+      </div>
+      <button type="submit" class="r-btn" id="rBtn">Enviar mi mensaje ♥</button>
+      <p class="r-status" id="rStatus" aria-live="polite"></p>
+      <div class="r-alt" id="rAlt" hidden>
+        <p>No se pudo enviar desde aquí. Puedes mandármelo por WhatsApp:</p>
+        <a class="r-wa" id="rWa" href="https://wa.me/" target="_blank" rel="noopener">Abrir WhatsApp con tu mensaje</a>
+      </div>
+    </form>
+    <div class="r-done" id="rDone" hidden>
+      <span class="r-heart">♥</span>
+      <h3>¡Mensaje enviado!</h3>
+      <p>Ya lo tengo. Gracias por leer hasta aquí, mi persona favorita.</p>
+    </div>
+  </section>
+
   <footer>Feliz 18, Davianny ♥ Hecho solo para ti</footer>
 </main>
 
@@ -626,7 +695,7 @@ document.body.classList.add('locked');
   const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
   const set=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
   let memStart=null;
-  function openLetter(){if(TEST){try{localStorage.removeItem('cartaDavianny.testStart')}catch(e){}}else set(KU,'1');gate.classList.add('done');document.body.classList.remove('locked');scrollTo(0,0);
+  function openLetter(){if(TEST){try{localStorage.removeItem('cartaDavianny.testStart');localStorage.removeItem('cartaDavianny.testFinal')}catch(e){}}else set(KU,'1');gate.classList.add('done');document.body.classList.remove('locked');scrollTo(0,0);
     burstAt(innerWidth/2,innerHeight*.4,50,true);setTimeout(()=>{gate.hidden=true},900)}
   function afterKeys(){
     if(TEST){WAIT=WAIT_TEST;KS='cartaDavianny.testStart';memStart=null}
@@ -640,12 +709,23 @@ document.body.classList.add('locked');
     let iv=null,lastSec=-1,phase='';
     const setPhase=p=>{if(p===phase)return;phase=p;gate.classList.remove('soon','final','ten');if(p)gate.classList.add(...p.split(' '));
       if(p==='soon'){h2.textContent='¡Ya falta poquito!';note.innerHTML='Quédate aquí…<br>algo bonito está por pasar ♥'}
-      if(p==='soon final'){h2.textContent='Prepárate…';qq.textContent='Tu carta se abre en';note.innerHTML='No cierres la pantalla,<br>esto es solo para ti ♥'}
+      if(p==='soon final'){h2.textContent='Prepárate…';qq.textContent='Tu carta se abre en';note.innerHTML='El último minuto solo corre<br>si estás aquí mirando ♥'}
       if(p==='soon final ten'){h2.textContent='Ya casi…';note.innerHTML='Respira hondo ♥'}};
     const finish=()=>{clearInterval(iv);clock.textContent='0:00:00';bar.style.width='100%';h2.textContent='¡Ya puedes abrirla! ♥';
       big.textContent='♥';big.classList.remove('go');void big.offsetWidth;big.classList.add('go');
       flash.classList.add('on');setTimeout(()=>{openLetter();setTimeout(()=>{burstAt(innerWidth*.25,innerHeight*.5,30,true);burstAt(innerWidth*.75,innerHeight*.5,30,true)},250)},900)};
-    const tick=()=>{const left=st+WAIT-Date.now();
+    // el último minuto solo corre mientras ella está mirando la página
+    const KF=TEST?'cartaDavianny.testFinal':'cartaDavianny.final';
+    let fin=Number(get(KF)),lastNow=Date.now();if(!(fin>=0)||get(KF)===null)fin=null;
+    const away=document.getElementById('gAway');
+    const tick=()=>{const now=Date.now(),dt=now-lastNow;lastNow=now;
+      let left=st+WAIT-now;
+      if(left<=60000||fin!==null){
+        if(fin===null)fin=60000;
+        if(document.visibilityState==='visible'){fin=Math.max(0,fin-Math.min(dt,1000))}
+        set(KF,String(Math.round(fin)));left=fin;
+        if(away)away.hidden=document.visibilityState==='visible';
+      }
       if(left<=0){if(phase!=='done'){phase='done';finish()}return}
       const sec=Math.ceil(left/1000);
       clock.textContent=Math.floor(sec/3600)+':'+pad(Math.floor(sec%3600/60))+':'+pad(sec%60);
@@ -657,6 +737,7 @@ document.body.classList.add('locked');
         if(sec<=10){big.textContent=sec;big.classList.remove('go');void big.offsetWidth;big.classList.add('go')}}
     };
     tick();iv=setInterval(tick,250);
+    document.addEventListener('visibilitychange',()=>{lastNow=Date.now();tick()});
     // atajo secreto: tocar 5 veces el reloj salta la espera (solo para probar)
     let taps=0,tt=null;clock.addEventListener('click',()=>{taps++;clearTimeout(tt);tt=setTimeout(()=>{taps=0},3000);
       if(taps>=5&&phase!=='done'){phase='done';finish()}});
@@ -672,6 +753,32 @@ document.body.classList.add('locked');
       else{err.textContent=code.length<4?'Faltan dígitos ♥':t2[Math.min(n,t2.length-1)];if(code.length===4)n++;shake();
         if(code.length===4){pins.forEach(p=>{p.value='';p.classList.remove('filled')});pins[0].focus()}}
     }
+  });
+})();
+
+// auto-actualización: si subes una versión nueva, la página se refresca sola mientras espera
+(()=>{const VERSION='202611031435';
+  async function check(){try{
+    if(!document.body.classList.contains('locked'))return; // no interrumpir si ya está leyendo
+    const r=await fetch('version.txt?'+Date.now(),{cache:'no-store'});if(!r.ok)return;
+    const v=(await r.text()).trim();if(v&&v!==VERSION)location.reload();
+  }catch(e){}}
+  setInterval(check,60000);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')check()});
+  setTimeout(check,3000);
+})();
+
+// mensaje de ella para ti (Netlify Forms)
+(()=>{const form=document.getElementById('rForm'),btn=document.getElementById('rBtn'),st=document.getElementById('rStatus'),alt=document.getElementById('rAlt'),wa=document.getElementById('rWa'),done=document.getElementById('rDone');
+  form.addEventListener('submit',async e=>{e.preventDefault();
+    const fd=new FormData(form);const msg=(fd.get('mensaje')||'').trim();
+    if(!msg){st.textContent='Escribe algo bonito primero ♥';document.getElementById('rMsg').focus();return}
+    btn.disabled=true;st.textContent='Enviando…';
+    const text='💌 '+(fd.get('nombre')||'Davianny')+': '+msg+(fd.get('sentimiento')?'\n('+fd.get('sentimiento')+')':'');
+    wa.href='https://wa.me/?text='+encodeURIComponent(text);
+    try{const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()});
+      if(!r.ok)throw new Error(r.status);
+      form.hidden=true;done.hidden=false;burstAt(innerWidth/2,innerHeight*.6,45,true);
+    }catch(err){st.textContent='';alt.hidden=false;btn.disabled=false}
   });
 })();
 </script>
